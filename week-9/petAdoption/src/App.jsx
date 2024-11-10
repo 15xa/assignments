@@ -1,9 +1,26 @@
 import Header from './components/Header';
 import PetAdoptionForm from './components/PetAdoptionForm';
+import AdopterData from './components/AdopterData';
+import React, { useState } from 'react';
+
+
 import "./myApp.css";
 
 
 const App = () => {
+
+  const [entries, setEntries] = useState([]);
+
+  const handleFormSubmit = (formData) => {
+    setEntries([...entries, formData]);
+  };
+
+ 
+
+
+
+
+
   return (
     <div
       style={{
@@ -13,8 +30,9 @@ const App = () => {
       }}
     >
       <Header message={"Pet Adoption Form"} />
-      <PetAdoptionForm />
+      <PetAdoptionForm onSubmit={handleFormSubmit} />
+      <AdopterData entries={entries}/>
     </div>
   );
 };
-export default App;
+export default App
